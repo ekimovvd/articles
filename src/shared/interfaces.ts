@@ -3,6 +3,7 @@ export interface Article {
   userId: number;
   body: string;
   title: string;
+  isViewed?: boolean;
 }
 
 export interface Author {

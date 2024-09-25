@@ -15,15 +15,24 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 import { Article } from "@/shared/interfaces";
+import { useViewedArticlesStore } from "@/stores/viewedArticles";
 
 const route = useRoute();
+const viewedArticlesStore = useViewedArticlesStore();
+
 const article = ref<Article | null>(null);
 
 onMounted(async () => {
+  const articleId = route.params.id as string;
+
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${route.params.id}`
+    `https://jsonplaceholder.typicode.com/posts/${articleId}`
   );
 
   article.value = await response.json();
+
+  if (article.value) {
+    viewedArticlesStore.addArticle(articleId);
+  }
 });
 </script>

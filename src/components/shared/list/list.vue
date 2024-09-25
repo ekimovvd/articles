@@ -9,7 +9,10 @@
 
   <ul>
     <li v-for="item in list" :key="item.id">
-      <router-link :to="`/articles/${item.id}`">
+      <router-link
+        :to="`/articles/${item.id}`"
+        :style="{ color: 'isViewed' in item && item.isViewed ? 'green' : '' }"
+      >
         {{ "title" in item ? item.title : item.name }}
       </router-link>
 
