@@ -1,12 +1,32 @@
 <template>
   <nav>
-    <router-link to="/">Articles</router-link> |
-
-    <router-link to="/authors">Authors</router-link>
+    <router-link v-for="link in links" :key="link.to" :to="link.to">
+      {{ link.label }}
+    </router-link>
   </nav>
 
   <router-view />
 </template>
+
+<script lang="ts" setup>
+import { RouteTo } from "@/shared/enums";
+
+interface Link {
+  label: string;
+  to: RouteTo;
+}
+
+const links: Link[] = [
+  {
+    label: "Articles",
+    to: RouteTo.home,
+  },
+  {
+    label: "Authors",
+    to: RouteTo.authors,
+  },
+];
+</script>
 
 <style lang="scss">
 #app {

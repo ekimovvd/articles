@@ -5,25 +5,27 @@ import ArticlePage from "@/views/articles/[id].vue";
 import AuthorsPage from "@/views/authors/index.vue";
 import AuthorPage from "@/views/authors/[id].vue";
 
+import { RouteName, RouteTo } from "@/shared/enums";
+
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "home",
+    path: RouteTo.home,
+    name: RouteName.home,
     component: HomePage,
   },
   {
-    path: "/articles/:id",
-    name: "article",
+    path: `${RouteTo.article}:id`,
+    name: RouteName.article,
     component: ArticlePage,
   },
   {
-    path: "/authors",
-    name: "authors",
+    path: RouteTo.authors,
+    name: RouteName.authors,
     component: AuthorsPage,
   },
   {
-    path: "/authors/:id",
-    name: "author",
+    path: `${RouteTo.author}:id`,
+    name: RouteName.author,
     component: AuthorPage,
   },
 ];

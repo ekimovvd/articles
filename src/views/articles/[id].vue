@@ -1,18 +1,12 @@
 <template>
-  <div>
-    <div v-if="article">
-      <h1>{{ article.title }}</h1>
+  <div v-if="article">
+    <h1>{{ article.title }}</h1>
 
-      <p>{{ article.body }}</p>
+    <p>{{ article.body }}</p>
 
-      <router-link :to="`/authors/${article.userId}`">
-        Author: {{ article.userId }}
-      </router-link>
-    </div>
-
-    <br />
-
-    <router-link to="/">Back to all articles</router-link>
+    <router-link :to="`/authors/${article.userId}`">
+      Author: {{ article.userId }}
+    </router-link>
   </div>
 </template>
 
@@ -31,7 +25,5 @@ onMounted(async () => {
   );
 
   article.value = await response.json();
-
-  console.log(article.value);
 });
 </script>

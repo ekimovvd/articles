@@ -1,22 +1,17 @@
 <template>
-  <div>
-    <h1 v-if="author">{{ author.name }}</h1>
-
-    <h2>Articles by this author:</h2>
-
-    <ul>
-      <li v-for="article in articles" :key="article.id">
-        <router-link :to="`/articles/${article.id}`">
-          {{ article.title }}
-        </router-link>
-      </li>
-    </ul>
-  </div>
+  <SharedList
+    v-if="author"
+    :title="author.name"
+    subtitle="Articles by this author:"
+    :list="articles"
+  />
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+
+import SharedList from "@/components/shared/list/list.vue";
 
 import { Author, Article } from "@/shared/interfaces";
 
